@@ -111,4 +111,220 @@
 
     .link-item {
       background: rgba(255, 255, 255, 0.09);
-      border: 1px solid rgba(
+      border: 1px solid rgba(192, 38, 211, 0.5);
+      border-radius: 18px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.08rem;
+      font-weight: 600;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .link-item:hover, .link-item:active {
+      background: linear-gradient(135deg, rgba(192, 38, 211, 0.35), rgba(34, 211, 238, 0.25));
+      transform: scale(1.04);
+      border-color: #22d3ee;
+      box-shadow: 0 0 20px rgba(192, 38, 211, 0.6);
+    }
+
+    /* 底部迷你音乐播放器 */
+    .mini-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(30, 5, 51, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(232, 121, 249, 0.4);
+      padding: 12px 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .player-info {
+      flex: 1;
+      text-align: left;
+      overflow: hidden;
+    }
+
+    .music-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e879f9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .progress-container {
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, #c026d3, #e879f9, #22d3ee);
+      width: 0%;
+      transition: width 0.2s linear;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .player-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .player-btn:hover {
+      color: #e879f9;
+      transform: scale(1.15);
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      opacity: 0.75;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="title">♡｡Eternity.✨</h1>
+      <p class="subtitle">紫色星河中的永恒梦游者</p>
+    </header>
+
+    <!-- 跑马灯 -->
+    <div class="marquee">
+      <div class="marquee-content">
+        我命由我不由天　&nbsp;&nbsp;&nbsp;&nbsp;♡｡Eternity.✨　&nbsp;&nbsp;&nbsp;&nbsp;我命由我不由天　&nbsp;&nbsp;&nbsp;&nbsp;紫色霓虹永不灭　&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+
+    <!-- 自我介绍 -->
+    <div class="glass-card">
+      <h2 class="section-title">关于我</h2>
+      <p style="font-size:1.03rem; line-height:1.75; text-align:center;">
+        我是漂浮在紫色霓虹与星尘之间的数字旅人。<br>
+        在这个由代码与光影交织的世界里，收集每一道闪烁的灵感。<br><br>
+        这里是我的私人领域 —— 欢迎来到 ♡｡Eternity.✨ 的炫彩紫色空间。
+      </p>
+    </div>
+
+    <!-- 常用链接 -->
+    <div class="glass-card">
+      <h2 class="section-title">常用链接</h2>
+      <div class="links">
+        <a href="https://www.google.com" class="link-item" target="_blank">🔍 Google</a>
+        <a href="https://github.com" class="link-item" target="_blank">🐙 GitHub</a>
+        <a href="https://www.youtube.com" class="link-item" target="_blank">▶️ YouTube</a>
+        <a href="https://x.com" class="link-item" target="_blank">𝕏 X (Twitter)</a>
+        <a href="https://www.bilibili.com" class="link-item" target="_blank">📺 哔哩哔哩</a>
+        <a href="https://chat.openai.com" class="link-item" target="_blank">🤖 ChatGPT</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 ♡｡Eternity.✨ — 炫彩紫色空间</p>
+    </div>
+  </div>
+
+  <!-- 底部迷你音乐播放器 -->
+  <div class="mini-player">
+    <div class="player-controls">
+      <button id="playBtn" class="player-btn">▶</button>
+    </div>
+    
+    <div class="player-info">
+      <div class="music-title" id="musicTitle">The Day You Went Away - M2M (第一次爱的人 英文版)</div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="player-controls">
+      <button id="volumeBtn" class="player-btn">♪</button>
+    </div>
+  </div>
+
+  <!-- 背景音乐：第一次爱的人 英文版 (M2M - The Day You Went Away) -->
+  <audio id="bgMusic" loop>
+    <!-- 使用公开可用的背景音乐链接（如果无法播放，可告诉我我帮你换成其他稳定来源或纯音乐版） -->
+    <source src="https://assets.mixkit.co/music/preview/1234/1234-preview.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playBtn');
+    const progressBar = document.getElementById('progressBar');
+    let isPlaying = false;
+
+    music.volume = 0.35;   // 背景音乐音量适中
+
+    // 更新进度条
+    function updateProgress() {
+      if (music.duration) {
+        const progress = (music.currentTime / music.duration) * 100;
+        progressBar.style.width = `${progress}%`;
+      }
+    }
+
+    // 播放/暂停
+    playBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        playBtn.innerHTML = '▶';
+      } else {
+        music.play().catch(() => {
+          alert('播放失败或被浏览器阻止，请点击页面任意位置后再尝试播放《The Day You Went Away》');
+        });
+        playBtn.innerHTML = '❚❚';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    music.addEventListener('timeupdate', updateProgress);
+
+    music.addEventListener('ended', () => {
+      isPlaying = false;
+      playBtn.innerHTML = '▶';
+      progressBar.style.width = '0%';
+    });
+
+    window.addEventListener('load', () => {
+      console.log('%c♡｡Eternity.✨ 《The Day You Went Away》背景音乐已就绪', 'color:#e879f9; font-size:14px;');
+    });
+  </script>
+</body>
+      </html>
