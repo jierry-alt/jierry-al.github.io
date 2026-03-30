@@ -56,7 +56,6 @@
       letter-spacing: 1px;
     }
 
-    /* 炫彩跑马灯 */
     .marquee {
       margin: 18px 0 35px;
       overflow: hidden;
@@ -133,7 +132,6 @@
       box-shadow: 0 0 20px rgba(192, 38, 211, 0.6);
     }
 
-    /* 底部迷你音乐播放器 */
     .mini-player {
       position: fixed;
       bottom: 0;
@@ -150,11 +148,7 @@
       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
     }
 
-    .player-info {
-      flex: 1;
-      text-align: left;
-      overflow: hidden;
-    }
+    .player-info { flex: 1; text-align: left; overflow: hidden; }
 
     .music-title {
       font-size: 0.95rem;
@@ -165,4 +159,151 @@
       text-overflow: ellipsis;
     }
 
-   
+    .progress-container {
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, #c026d3, #e879f9, #22d3ee);
+      width: 0%;
+      transition: width 0.2s linear;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .player-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .player-btn:hover { color: #e879f9; transform: scale(1.15); }
+
+    .footer { margin-top: 30px; font-size: 0.9rem; opacity: 0.75; }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="title">♡｡Eternity.✨</h1>
+      <p class="subtitle">紫色星河中的永恒梦游者</p>
+    </header>
+
+    <div class="marquee">
+      <div class="marquee-content">
+        我命由我不由天　&nbsp;&nbsp;&nbsp;&nbsp;♡｡Eternity.✨　&nbsp;&nbsp;&nbsp;&nbsp;我命由我不由天　&nbsp;&nbsp;&nbsp;&nbsp;紫色霓虹永不灭　&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+
+    <div class="glass-card">
+      <h2 class="section-title">关于我</h2>
+      <p style="font-size:1.03rem; line-height:1.75; text-align:center;">
+        我是漂浮在紫色霓虹与星尘之间的数字旅人。<br>
+        在这个由代码与光影交织的世界里，收集每一道闪烁的灵感。<br><br>
+        这里是我的私人领域 —— 欢迎来到 ♡｡Eternity.✨ 的炫彩紫色空间。
+      </p>
+    </div>
+
+    <div class="glass-card">
+      <h2 class="section-title">常用工具 & 导航</h2>
+      <div class="links">
+        <a href="https://jierry-alt.github.io/my-proxy/" class="link-item" target="_blank">🌐 我的代理工具</a>
+        <a href="https://jierry-alt.github.io/zh/" class="link-item" target="_blank">🇨🇳 中文导航</a>
+        <a href="https://jierry-alt.github.io/" class="link-item" target="_blank">🏠 主页导航</a>
+        <a href="https://paste.c-net.org/" class="link-item" target="_blank">📋 Paste 工具</a>
+        <a href="https://sub.ikar.eu.org" class="link-item" target="_blank">🔗 订阅转换</a>
+        <a href="https://my.dnshe.com/clientarea.php" class="link-item" target="_blank">☁️ DNSHE 管理面板</a>
+        <a href="https://my.ippure.com/v1/card?t=1774553488186&tk=2f27156a324abdc0e1ee7ca00287fd8ff357f6634ee3992b081c002400d67b62&li=1" class="link-item" target="_blank">💳 IPPURE 卡片中心</a>
+        <a href="https://imgant.com/" class="link-item" target="_blank">🖼️ ImgAnt 图床</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 ♡｡Eternity.✨ — 炫彩紫色空间</p>
+    </div>
+  </div>
+
+  <!-- 底部迷你音乐播放器 -->
+  <div class="mini-player">
+    <div class="player-controls">
+      <button id="playBtn" class="player-btn">▶</button>
+    </div>
+    
+    <div class="player-info">
+      <div class="music-title" id="musicTitle">Dreamy Ambient - Background Music</div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="player-controls">
+      <button id="volumeBtn" class="player-btn">♪</button>
+    </div>
+  </div>
+
+  <!-- 背景音乐（稳定免费来源） -->
+  <audio id="bgMusic" loop>
+    <source src="https://assets.mixkit.co/music/preview/1234/1234-preview.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playBtn');
+    const progressBar = document.getElementById('progressBar');
+    let isPlaying = false;
+
+    music.volume = 0.32;
+
+    function updateProgress() {
+      if (music.duration) {
+        const progress = (music.currentTime / music.duration) * 100;
+        progressBar.style.width = `${progress}%`;
+      }
+    }
+
+    playBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        playBtn.innerHTML = '▶';
+      } else {
+        music.play().catch(() => {
+          alert('音乐播放被浏览器阻止\n\n请先点击页面任意空白处，然后再点击▶按钮');
+        });
+        playBtn.innerHTML = '❚❚';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    music.addEventListener('timeupdate', updateProgress);
+
+    music.addEventListener('ended', () => {
+      isPlaying = false;
+      playBtn.innerHTML = '▶';
+      progressBar.style.width = '0%';
+    });
+  </script>
+</body>
+</html>
