@@ -267,7 +267,7 @@
     </div>
     
     <div class="player-info">
-      <div class="music-title" id="musicTitle">The Day You Went Away - M2M (第一次爱的人 英文版)</div>
+      <div class="music-title" id="musicTitle">那些花儿 - 朴树</div>
       <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
       </div>
@@ -278,10 +278,10 @@
     </div>
   </div>
 
-  <!-- 背景音乐：第一次爱的人 英文版 (M2M - The Day You Went Away) -->
+  <!-- 背景音乐：那些花儿（使用公开可播放链接） -->
   <audio id="bgMusic" loop>
-    <!-- 使用公开可用的背景音乐链接（如果无法播放，可告诉我我帮你换成其他稳定来源或纯音乐版） -->
-    <source src="https://assets.mixkit.co/music/preview/1234/1234-preview.mp3" type="audio/mpeg">
+    <source src="https://www.fangpi.net/music/11577682" type="audio/mpeg">
+    <!-- 如果无法播放，可尝试替换为其他公开链接，或告诉我我帮你换成钢琴版/伴奏版 -->
   </audio>
 
   <script>
@@ -289,8 +289,9 @@
     const playBtn = document.getElementById('playBtn');
     const progressBar = document.getElementById('progressBar');
     let isPlaying = false;
+    let progressInterval = null;
 
-    music.volume = 0.35;   // 背景音乐音量适中
+    music.volume = 0.35;   // 音量适中，适合背景
 
     // 更新进度条
     function updateProgress() {
@@ -306,8 +307,9 @@
         music.pause();
         playBtn.innerHTML = '▶';
       } else {
-        music.play().catch(() => {
-          alert('播放失败或被浏览器阻止，请点击页面任意位置后再尝试播放《The Day You Went Away》');
+        music.play().catch(err => {
+          console.log(err);
+          alert('播放失败或被浏览器阻止，请点击页面任意位置后再次尝试播放《那些花儿》');
         });
         playBtn.innerHTML = '❚❚';
       }
@@ -322,9 +324,10 @@
       progressBar.style.width = '0%';
     });
 
+    // 页面加载提示
     window.addEventListener('load', () => {
-      console.log('%c♡｡Eternity.✨ 《The Day You Went Away》背景音乐已就绪', 'color:#e879f9; font-size:14px;');
+      console.log('%c♡｡Eternity.✨ 《那些花儿》背景音乐已就绪', 'color:#e879f9; font-size:14px;');
     });
   </script>
 </body>
-      </html>
+</html>
