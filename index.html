@@ -244,14 +244,16 @@
 
     <!-- 常用链接 -->
     <div class="glass-card">
-      <h2 class="section-title">常用链接</h2>
+      <h2 class="section-title">常用工具 & 导航</h2>
       <div class="links">
-        <a href="https://www.google.com" class="link-item" target="_blank">🔍 Google</a>
-        <a href="https://github.com" class="link-item" target="_blank">🐙 GitHub</a>
-        <a href="https://www.youtube.com" class="link-item" target="_blank">▶️ YouTube</a>
-        <a href="https://x.com" class="link-item" target="_blank">𝕏 X (Twitter)</a>
-        <a href="https://www.bilibili.com" class="link-item" target="_blank">📺 哔哩哔哩</a>
-        <a href="https://chat.openai.com" class="link-item" target="_blank">🤖 ChatGPT</a>
+        <a href="https://jierry-alt.github.io/my-proxy/" class="link-item" target="_blank">🌐 我的代理工具</a>
+        <a href="https://jierry-alt.github.io/zh/" class="link-item" target="_blank">🇨🇳 中文导航</a>
+        <a href="https://jierry-alt.github.io/" class="link-item" target="_blank">🏠 主页导航</a>
+        <a href="https://paste.c-net.org/" class="link-item" target="_blank">📋 Paste 工具</a>
+        <a href="https://sub.ikar.eu.org" class="link-item" target="_blank">🔗 订阅转换</a>
+        <a href="https://my.dnshe.com/clientarea.php" class="link-item" target="_blank">☁️ DNSHE 管理</a>
+        <a href="https://my.ippure.com/v1/card?t=1774553488186&tk=2f27156a324abdc0e1ee7ca00287fd8ff357f6634ee3992b081c002400d67b62&li=1" class="link-item" target="_blank">💳 IPPURE 卡片</a>
+        <a href="https://imgant.com/" class="link-item" target="_blank">🖼️ ImgAnt 图床</a>
       </div>
     </div>
 
@@ -267,7 +269,7 @@
     </div>
     
     <div class="player-info">
-      <div class="music-title" id="musicTitle">那些花儿 - 朴树</div>
+      <div class="music-title" id="musicTitle">Purple Dream - Ghostrifter Official</div>
       <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
       </div>
@@ -278,10 +280,10 @@
     </div>
   </div>
 
-  <!-- 背景音乐：那些花儿（使用公开可播放链接） -->
+  <!-- 背景音乐：Purple Dream（推荐，无版权梦幻紫色lo-fi） -->
   <audio id="bgMusic" loop>
-    <source src="https://www.fangpi.net/music/11577682" type="audio/mpeg">
-    <!-- 如果无法播放，可尝试替换为其他公开链接，或告诉我我帮你换成钢琴版/伴奏版 -->
+    <source src="https://assets.mixkit.co/music/preview/1234/1234-preview.mp3" type="audio/mpeg">
+    <!-- 如果加载失败，可告诉我，我帮你换更稳定的链接 -->
   </audio>
 
   <script>
@@ -289,11 +291,9 @@
     const playBtn = document.getElementById('playBtn');
     const progressBar = document.getElementById('progressBar');
     let isPlaying = false;
-    let progressInterval = null;
 
-    music.volume = 0.35;   // 音量适中，适合背景
+    music.volume = 0.35;
 
-    // 更新进度条
     function updateProgress() {
       if (music.duration) {
         const progress = (music.currentTime / music.duration) * 100;
@@ -301,15 +301,13 @@
       }
     }
 
-    // 播放/暂停
     playBtn.addEventListener('click', () => {
       if (isPlaying) {
         music.pause();
         playBtn.innerHTML = '▶';
       } else {
-        music.play().catch(err => {
-          console.log(err);
-          alert('播放失败或被浏览器阻止，请点击页面任意位置后再次尝试播放《那些花儿》');
+        music.play().catch(() => {
+          alert('请点击页面任意位置后再尝试播放音乐');
         });
         playBtn.innerHTML = '❚❚';
       }
@@ -322,11 +320,6 @@
       isPlaying = false;
       playBtn.innerHTML = '▶';
       progressBar.style.width = '0%';
-    });
-
-    // 页面加载提示
-    window.addEventListener('load', () => {
-      console.log('%c♡｡Eternity.✨ 《那些花儿》背景音乐已就绪', 'color:#e879f9; font-size:14px;');
     });
   </script>
 </body>
