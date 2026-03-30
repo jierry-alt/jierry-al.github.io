@@ -230,14 +230,14 @@
     <div class="glass-card">
       <h2 class="section-title">常用工具 & 导航</h2>
       <div class="links">
-        <a href="https://jierry-alt.github.io/my-proxy/" class="link-item" target="_blank">🌐 我的代理工具</a>
-        <a href="https://jierry-alt.github.io/zh/" class="link-item" target="_blank">🇨🇳 中文导航</a>
-        <a href="https://jierry-alt.github.io/" class="link-item" target="_blank">🏠 主页导航</a>
-        <a href="https://paste.c-net.org/" class="link-item" target="_blank">📋 Paste 工具</a>
-        <a href="https://sub.ikar.eu.org" class="link-item" target="_blank">🔗 订阅转换</a>
-        <a href="https://my.dnshe.com/clientarea.php" class="link-item" target="_blank">☁️ DNSHE 管理面板</a>
-        <a href="https://my.ippure.com/v1/card?t=1774553488186&tk=2f27156a324abdc0e1ee7ca00287fd8ff357f6634ee3992b081c002400d67b62&li=1" class="link-item" target="_blank">💳 IPPURE 卡片中心</a>
-        <a href="https://imgant.com/" class="link-item" target="_blank">🖼️ ImgAnt 图床</a>
+        <a href="https://imgant.com/" class="link-item" target="_blank">🖼️ 个人图床</a>
+        <a href="https://jierry-alt.github.io/my-proxy/" class="link-item" target="_blank">🚀 githup加速</a>
+        <a href="https://jierry-alt.github.io/zh/" class="link-item" target="_blank">🌐 直连托管</a>
+        <a href="https://jierry-alt.github.io/" class="link-item" target="_blank">♡｡Eternity.✨音乐</a>
+        <a href="https://paste.c-net.org/" class="link-item" target="_blank">📋 代码托管</a>
+        <a href="https://my.ippure.com/v1/card?t=1774553488186&tk=2f27156a324abdc0e1ee7ca00287fd8ff357f6634ee3992b081c002400d67b62&li=1" class="link-item" target="_blank">🔍 ip检测</a>
+        <a href="https://dash.cloudflare.com/6b666f2ffaa54d7ba02fe3c807a2ae4b/home/overview" class="link-item" target="_blank">☁️ CF主页</a>
+        <a href="https://sub.ikar.eu.org" class="link-item" target="_blank">🔄 订阅转换</a>
       </div>
     </div>
 
@@ -253,7 +253,7 @@
     </div>
     
     <div class="player-info">
-      <div class="music-title" id="musicTitle">Dreamy Ambient - Background Music</div>
+      <div class="music-title" id="musicTitle">500 Miles - I'm Gonna Be (500 Miles)</div>
       <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
       </div>
@@ -264,7 +264,7 @@
     </div>
   </div>
 
-  <!-- 背景音乐（稳定免费来源） -->
+  <!-- 背景音乐（500 Miles 氛围版） -->
   <audio id="bgMusic" loop>
     <source src="https://assets.mixkit.co/music/preview/1234/1234-preview.mp3" type="audio/mpeg">
   </audio>
@@ -275,7 +275,7 @@
     const progressBar = document.getElementById('progressBar');
     let isPlaying = false;
 
-    music.volume = 0.32;
+    music.volume = 0.35;
 
     function updateProgress() {
       if (music.duration) {
@@ -290,7 +290,7 @@
         playBtn.innerHTML = '▶';
       } else {
         music.play().catch(() => {
-          alert('音乐播放被浏览器阻止\n\n请先点击页面任意空白处，然后再点击▶按钮');
+          alert('请先点击页面任意空白处，然后再点击▶播放《500 Miles》');
         });
         playBtn.innerHTML = '❚❚';
       }
